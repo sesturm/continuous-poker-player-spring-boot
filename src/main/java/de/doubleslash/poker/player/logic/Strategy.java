@@ -1,5 +1,6 @@
 package de.doubleslash.poker.player.logic;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import de.doubleslash.poker.player.data.Card;
 import de.doubleslash.poker.player.data.Rank;
 import de.doubleslash.poker.player.data.Table;
@@ -75,6 +76,7 @@ public class Strategy {
     }
 
   public int decide(Table table){
+      System.out.println(table);
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
 
