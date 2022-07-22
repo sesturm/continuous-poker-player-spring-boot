@@ -74,11 +74,14 @@ public class Strategy {
         return false;
     }
 
-
-
   public int decide(Table table){
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
+
+     if(cards.size()==2){
+         return table.getMinimumBet();
+     }
+
       if (hasRoyalFush(cards)) {
          return table.getOwnPlayer().getStack();
       }
