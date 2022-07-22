@@ -54,21 +54,21 @@ public class Strategy {
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
       if (hasRoyalFush(cards)) {
-         return 1;
+         return 5;
       }
       if (hasStraight(cards)) {
-         return 2;
+         return 4;
       }
       if (hasTriple(cards)) {
          return 3;
       }
       if (hasTwoPair(cards)) {
-         return 4;
+         return 2;
       }
       if (hasPair(cards)) {
-         return 5;
+         return 1;
       }
-      return 6;
+      return 0;
    }
 
 }
