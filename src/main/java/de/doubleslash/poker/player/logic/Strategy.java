@@ -54,7 +54,7 @@ public class Strategy {
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
       if (hasRoyalFush(cards)) {
-         return 5;
+         return table.getOwnPlayer().getStack();
       }
       if (hasStraight(cards)) {
          return 4;
