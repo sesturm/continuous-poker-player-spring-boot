@@ -75,6 +75,7 @@ public class Strategy {
     }
 
 
+
   public int decide(Table table){
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
@@ -99,7 +100,7 @@ public class Strategy {
       if (hasPair(cards)) {
           return table.getMinimumBet() + 10;
       }
-      return 0;
+      return table.getMinimumBet();
    }
 
 }
