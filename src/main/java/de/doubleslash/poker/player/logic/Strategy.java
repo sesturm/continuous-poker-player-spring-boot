@@ -75,16 +75,16 @@ public class Strategy {
           return table.getOwnPlayer().getStack();
       }
       if (hasStraight(cards)) {
-         return 40;
+         return table.getMinimumBet() + 40;
       }
       if (hasTriple(cards)) {
-         return 30;
+          return table.getMinimumBet() + 30;
       }
       if (hasTwoPair(cards)) {
-         return 20;
+          return table.getMinimumBet() + 20;
       }
       if (hasPair(cards)) {
-         return 10;
+          return table.getMinimumBet() + 10;
       }
       return 0;
    }
