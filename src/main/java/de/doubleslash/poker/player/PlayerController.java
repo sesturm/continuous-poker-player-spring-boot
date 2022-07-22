@@ -13,7 +13,7 @@ public class PlayerController {
 
    @PostMapping(value = "/", produces = "text/plain", consumes = "application/json")
    @ResponseBody
-   public int action(@RequestBody final Table table) {
+   public int action(@RequestBody final Table table) throws InterruptedException {
       final Strategy player = new Strategy();
       return player.decide(table);
    }
