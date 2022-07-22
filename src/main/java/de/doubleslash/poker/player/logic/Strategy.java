@@ -49,7 +49,9 @@ public class Strategy {
    private boolean hasRoyalFush(List<Card> cards){
       cards =  cards.stream().sorted((c1, c2) -> c1.getRank().compareTo(c2.getRank())).collect(Collectors.toList());
       if (cards.get(0).getRank() == Rank.ACE && cards.get(1).getRank() == Rank.KING && cards.get(2).getRank() == Rank.QUEEN && cards.get(3).getRank() == Rank.JACK && cards.get(4).getRank() == Rank.TEN) {
-         return true;
+          if (cards.get(0).getSuit() == cards.get(1).getSuit() && cards.get(0).getSuit() == cards.get(2).getSuit() && cards.get(0).getSuit() == cards.get(3).getSuit() && cards.get(0).getSuit() == cards.get(4).getSuit()) {
+              return true;
+          }
       }
       return false;
    }
