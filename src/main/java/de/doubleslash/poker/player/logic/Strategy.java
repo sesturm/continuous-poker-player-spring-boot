@@ -75,16 +75,16 @@ public class Strategy {
           return table.getOwnPlayer().getStack();
       }
       if (hasStraight(cards)) {
-         return 4;
+         return 40;
       }
       if (hasTriple(cards)) {
-         return 3;
+         return 30;
       }
       if (hasTwoPair(cards)) {
-         return 2;
+         return 20;
       }
       if (hasPair(cards)) {
-         return 1;
+         return 10;
       }
       return 0;
    }
