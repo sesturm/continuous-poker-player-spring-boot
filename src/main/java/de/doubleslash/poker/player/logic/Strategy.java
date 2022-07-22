@@ -85,11 +85,11 @@ public class Strategy {
       if (hasRoyalFush(cards)) {
          return table.getOwnPlayer().getStack();
       }
-      if (hasFush(cards)) {
-          return table.getOwnPlayer().getStack();
+      if (hasStraightFlush(cards)) {
+          return table.getMinimumBet() + 60;
       }
       if (hasFush(cards)) {
-          return table.getOwnPlayer().getStack();
+          return table.getMinimumBet() + 50;
       }
       if (hasStraight(cards)) {
          return table.getMinimumBet() + 40;
