@@ -111,16 +111,16 @@ public class Strategy {
       if (hasPair(cards)) {
           return raise(table.getMinimumRaise() + 10,table);
       }
-      log.println("Fold");
+      log.info("Fold");
       return 1;
    }
 
    private int raise(int target,Table table){
        if(target>table.getOwnPlayer().getStack()){
-           log.println("AllIn because of no money");
+           log.info("AllIn because of no money");
            return table.getOwnPlayer().getStack();
        }
-       log.println("Raise to " + target);
+       log.info("Raise to " + target);
        return target;
 
    }
