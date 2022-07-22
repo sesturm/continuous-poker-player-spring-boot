@@ -29,6 +29,14 @@ public class Card {
       return capitalize(rank) + " of " + capitalize(suit);
    }
 
+   public int compareRank(Card card) {
+      return this.rank.compareTo(card.rank);
+   }
+
+   public int compareSuit(Card card) {
+      return this.suit.compareTo(card.suit);
+   }
+
    private String capitalize(final Enum<?> e) {
       final String s = e.name().toLowerCase();
       return Character.toUpperCase(s.charAt(0)) + s.substring(1);
