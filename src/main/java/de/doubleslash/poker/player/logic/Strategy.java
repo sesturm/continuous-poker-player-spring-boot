@@ -79,29 +79,29 @@ public class Strategy {
      cards.addAll(table.getOwnPlayer().getCards());
 
      if(cards.size()<=5){
-         return table.getMinimumBet();
+         return table.getMinimumRaise();
      }
 
       if (hasRoyalFush(cards)) {
          return table.getOwnPlayer().getStack();
       }
       if (hasStraightFlush(cards)) {
-          return table.getMinimumBet() + 60;
+          return table.getMinimumRaise() + 60;
       }
       if (hasFush(cards)) {
-          return table.getMinimumBet() + 50;
+          return table.getMinimumRaise() + 50;
       }
       if (hasStraight(cards)) {
-         return table.getMinimumBet() + 40;
+         return table.getMinimumRaise() + 40;
       }
       if (hasTriple(cards)) {
-          return table.getMinimumBet() + 30;
+          return table.getMinimumRaise() + 30;
       }
       if (hasTwoPair(cards)) {
-          return table.getMinimumBet() + 20;
+          return table.getMinimumRaise() + 20;
       }
       if (hasPair(cards)) {
-          return table.getMinimumBet() + 10;
+          return table.getMinimumRaise() + 10;
       }
       return 0;
    }
