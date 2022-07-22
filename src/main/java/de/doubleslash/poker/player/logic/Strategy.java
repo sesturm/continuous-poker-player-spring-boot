@@ -107,12 +107,12 @@ public class Strategy {
           return raise(table.getMinimumRaise() + 10,table);
       }
       System.out.println("Fold");
-      return 0;
+      return 1;
    }
 
    private int raise(int target,Table table){
        if(target>table.getOwnPlayer().getStack()){
-           System.out.println("AllIn");
+           System.out.println("AllIn because of no money");
            return table.getOwnPlayer().getStack();
        }
        System.out.println("Raise to " + target);
