@@ -5,6 +5,7 @@ import de.doubleslash.poker.player.data.Rank;
 import de.doubleslash.poker.player.data.Table;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Strategy {
 
@@ -46,7 +47,7 @@ public class Strategy {
    }
 
    private boolean hasRoyalFush(List<Card> cards){
-       cards.stream().sorted((c1, c2) -> c1.getRank().compareTo(c2.getRank()));
+      cards =  cards.stream().sorted((c1, c2) -> c1.getRank().compareTo(c2.getRank())).collect(Collectors.toList());
       if (cards.get(0).getRank() == Rank.ACE && cards.get(1).getRank() == Rank.KING && cards.get(2).getRank() == Rank.QUEEN && cards.get(3).getRank() == Rank.JACK && cards.get(4).getRank() == Rank.TEN) {
          return true;
       }
