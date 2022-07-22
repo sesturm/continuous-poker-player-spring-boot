@@ -55,11 +55,24 @@ public class Strategy {
       }
       return false;
    }
+
+    private boolean hasFush(List<Card> cards){
+        cards =  cards.stream().sorted((c1, c2) -> c1.getRank().compareTo(c2.getRank())).collect(Collectors.toList());
+        if (cards.get(0).getSuit() == cards.get(1).getSuit() && cards.get(0).getSuit() == cards.get(2).getSuit() && cards.get(0).getSuit() == cards.get(3).getSuit() && cards.get(0).getSuit() == cards.get(4).getSuit()) {
+            return true;
+        }
+        return false;
+    }
+
+
   public int decide(Table table){
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
       if (hasRoyalFush(cards)) {
          return table.getOwnPlayer().getStack();
+      }
+      if (hasFush(cards)) {
+          return table.getOwnPlayer().getStack();
       }
       if (hasStraight(cards)) {
          return 4;
