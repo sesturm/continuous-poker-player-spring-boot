@@ -8,11 +8,9 @@ import java.util.List;
 
 public class Strategy {
 
-   private boolean hasPair (List<Card> card){
-      for (int i = 0; i < card.size() - 1; i++) {
-         if (card.get(i).getRank() == card.get(i + 1).getRank()) {
-            return true;
-         }
+   private boolean hasPair (List<Card> cards){
+      for (int i = 0; i < cards.size() - 1; i++) {
+          return cards.stream().filter(c -> c.getRank() == cards.get(i).getRank()).count()==2;
       }
       return false;
    }
@@ -26,12 +24,10 @@ public class Strategy {
       return false;
    }
 
-   private boolean hasTriple(List<Card> card){
-      for (int i = 0; i < card.size() - 2; i++) {
-         if (card.get(i).getRank() == card.get(i + 1).getRank() && card.get(i).getRank() == card.get(i + 2).getRank()) {
-            return true;
-         }
-      }
+   private boolean hasTriple(List<Card> cards){
+       for (int i = 0; i < cards.size() - 1; i++) {
+           return cards.stream().filter(c -> c.getRank() == cards.get(i).getRank()).count()==3;
+       }
       return false;
    }
 
