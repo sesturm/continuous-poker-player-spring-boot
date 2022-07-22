@@ -75,7 +75,8 @@ public class Strategy {
         return false;
     }
 
-  public int decide(Table table){System.out.println("");
+  public int decide(Table table) throws InterruptedException {System.out.println("");
+       Thread.sleep(5000);
       System.out.println(table);
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
