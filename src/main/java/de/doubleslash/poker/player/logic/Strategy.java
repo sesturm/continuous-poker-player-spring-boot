@@ -75,7 +75,7 @@ public class Strategy {
         return false;
     }
 
-  public int decide(Table table){
+  public int decide(Table table){System.out.println("");
       System.out.println(table);
       List<Card> cards = table.getCommunityCards();
      cards.addAll(table.getOwnPlayer().getCards());
