@@ -32,9 +32,14 @@ public class Strategy {
    }
 
    private boolean hasTwoPair(List<Card> card){
+       Rank foundRank = null;
       for (int i = 0; i < card.size() - 1; i++) {
+          if (card.get(i).getRank() == foundRank)
+              continue;
          if (card.get(i).getRank() == card.get(i + 1).getRank()) {
-            return true;
+            if(foundRank!=null)
+                return true;
+            foundRank = card.get(i).getRank();
          }
       }
       return false;
