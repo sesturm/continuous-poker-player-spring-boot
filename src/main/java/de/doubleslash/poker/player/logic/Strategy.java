@@ -86,24 +86,31 @@ public class Strategy {
          return table.getOwnPlayer().getStack();
       }
       if (hasStraightFlush(cards)) {
-          return table.getMinimumRaise() + 60;
+          return raise(table.getMinimumRaise() + 60,table);
       }
       if (hasFush(cards)) {
-          return table.getMinimumRaise() + 50;
+          return raise(table.getMinimumRaise() + 50,table);
       }
       if (hasStraight(cards)) {
-         return table.getMinimumRaise() + 40;
+         return raise(table.getMinimumRaise() + 40,table);
       }
       if (hasTriple(cards)) {
-          return table.getMinimumRaise() + 30;
+          return raise(table.getMinimumRaise() + 30,table);
       }
       if (hasTwoPair(cards)) {
-          return table.getMinimumRaise() + 20;
+          return raise(table.getMinimumRaise() + 20,table);
       }
       if (hasPair(cards)) {
-          return table.getMinimumRaise() + 10;
+          return raise(table.getMinimumRaise() + 10,table);
       }
       return 0;
+   }
+
+   private int raise(int target,Table table){
+       if(target>table.getOwnPlayer().getStack()){
+           return table.getOwnPlayer().getStack();
+       }
+       return target;
    }
 
 }
