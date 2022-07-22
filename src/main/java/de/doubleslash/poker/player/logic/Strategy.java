@@ -6,10 +6,13 @@ import de.doubleslash.poker.player.data.Rank;
 import de.doubleslash.poker.player.data.Table;
 
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class Strategy {
 
+
+    Logger log = Logger.getLogger(Strategy.class.getName());
    private boolean hasPair (List<Card> cards){
       for (int i = 0; i < cards.size() - 1; i++) {
           return cards.stream().filter(c -> c.getRank() == cards.get(i).getRank()).count()==2;
@@ -75,7 +78,7 @@ public class Strategy {
         return false;
     }
 
-  public int decide(Table table) throws InterruptedException {System.out.println("");
+  public int decide(Table table) throws InterruptedException {ut.println("");
        Thread.sleep(5000);
       System.out.println(table);
       List<Card> cards = table.getCommunityCards();
