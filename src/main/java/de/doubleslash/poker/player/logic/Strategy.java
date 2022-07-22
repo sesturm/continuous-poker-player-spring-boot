@@ -85,6 +85,7 @@ public class Strategy {
      }
 
       if (hasRoyalFush(cards)) {
+          System.out.println("AllIn");
          return table.getOwnPlayer().getStack();
       }
       if (hasStraightFlush(cards)) {
@@ -105,14 +106,18 @@ public class Strategy {
       if (hasPair(cards)) {
           return raise(table.getMinimumRaise() + 10,table);
       }
+      System.out.println("Fold");
       return 0;
    }
 
    private int raise(int target,Table table){
        if(target>table.getOwnPlayer().getStack()){
+           System.out.println("AllIn");
            return table.getOwnPlayer().getStack();
        }
+       System.out.println("Raise to " + target);
        return target;
+
    }
 
 }
