@@ -81,6 +81,7 @@ public class Strategy {
      cards.addAll(table.getOwnPlayer().getCards());
 
      if(cards.size()<=5){
+         System.out.println("not Enough information to decide");
          return table.getMinimumRaise();
      }
 
