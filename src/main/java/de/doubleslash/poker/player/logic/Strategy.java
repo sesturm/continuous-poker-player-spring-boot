@@ -1,11 +1,11 @@
 package de.doubleslash.poker.player.logic;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import de.doubleslash.poker.player.data.Card;
 import de.doubleslash.poker.player.data.Rank;
 import de.doubleslash.poker.player.data.Table;
 
 import java.util.List;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -13,21 +13,38 @@ public class Strategy {
 
 
     Logger log = Logger.getLogger(Strategy.class.getName());
-   private boolean hasPair (List<Card> cards){
-      for (int i = 0; i < cards.size() - 1; i++) {
-          return cards.stream().filter(c -> c.getRank() == cards.get(i).getRank()).count()==2;
-      }
-      return false;
-   }
+    private boolean hasPair(List<Card> cards){
+        return cards.stream()
+                .collect(Collectors.groupingBy(Card::getRank, Collectors.counting()))
+                .values()
+                .stream()
+                .anyMatch(count -> count >= 2);
+    }
 
-   private boolean hasStraight(List<Card> card){
-      for (int i = 0; i < card.size() - 3; i++) {
-         if (card.get(i).getRank() == card.get(i + 1).getRank() && card.get(i).getRank() == card.get(i + 2).getRank() && card.get(i).getRank() == card.get(i + 3).getRank()) {
-            return true;
-         }
-      }
-      return false;
-   }
+    private boolean hasStraight(List<Card> card){
+        TreeSet<Integer> ranks = card.stream()
+                .map(c -> c.getRank().value)
+                .collect(Collectors.toCollection(TreeSet::new));
+
+        if (ranks.contains(Rank.ACE.value)) {
+            ranks.add(-1); // treat Ace as low for wheel straights
+        }
+
+        Integer[] values = ranks.toArray(new Integer[0]);
+        for (int i = 0; i <= values.length - 5; i++) {
+            boolean sequential = true;
+            for (int j = 1; j < 5; j++) {
+                if (values[i + j] != values[i] + j) {
+                    sequential = false;
+                    break;
+                }
+            }
+            if (sequential) {
+                return true;
+            }
+        }
+        return false;
+    }
 
    private boolean hasTriple(List<Card> cards){
        for (int i = 0; i < cards.size() - 1; i++) {
